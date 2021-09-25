@@ -4,5 +4,5 @@
  * @param {import('../utils/client')} client
  */
 module.exports = async (client) => {
-    // insert...
+    //
 };

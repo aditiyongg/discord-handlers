@@ -1,8 +1,8 @@
-## About
+# About
 
-Welcome, this is a powerful set of handlers available for [discord.js v13](https://www.npmjs.com/package/discord.js "https://www.npmjs.com/package/discord.js"). The aim of these handlers are to allow developers to skip the tedious process of having to create a handler for their project(s). The process of doing this is redundant and takes unecessary time. The handlers offer:
+Welcome, this is a powerful set of handlers available for [discord.js v13](https://www.npmjs.com/package/discord.js "https://www.npmjs.com/package/discord.js"). The aim of these handlers are to allow developers to skip the tedious process of having to create a handler for their project(s). The process of doing this is redundant and takes unecessary time. This package also includes a [`JavaScript`](javascript) & [`TypeScript`](typescript) versions of the handlers. With that in mind, the handlers offer:
 
-- Easy set up, everything is documented.
+- Easy set up - everything is documented.
 - Basic handler without mongo & advanced handler with mongo.
 - Very performant & clean code.
 - 100% coverage of the Discord API.
@@ -93,6 +93,23 @@ module.exports = class TemplateSubCommands extends Command {
 4. Add a useful description for your new command.
 5. Voila! You can now add any new options.
 6. If you would like your command registered as a global command, set `development` to `false`.
+
+**Adding an event:**
+- *Javascript:*
+```js
+// @ts-check
+/**
+ * event name here
+ * @param {import('../utils/client')} client
+ */
+module.exports = async (client) => {
+    //
+};
+```
+1. Create your new event file, ending in the `.js` extension. **The file name needs to be the event name!**
+2. Add the necessary jsdoc parameters for intellisense.
+3. Add the necessary parameters.
+5. Voila! Your event is now added!
 
 ## Credits
 - [Canta's bot-prefab-package](https://npmjs.org/package/bot-prefab-package "https://npmjs.org/package/bot-prefab-package")
