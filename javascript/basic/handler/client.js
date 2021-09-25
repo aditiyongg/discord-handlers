@@ -67,7 +67,7 @@ class HandlerClient extends Client {
             await this.loadEvents();
             this.utils.log('SUCCESS', 'src/util/client.js', 'Loaded all events!');
         } catch (e) {
-            this.utils.log('ERROR', 'src/util/client.js', `Error loading events: ${e.message}`);
+            this.utils.log('ERROR', 'src/util/client.js', `Error loading events: ${e}`);
         }
 
         try {
@@ -75,7 +75,7 @@ class HandlerClient extends Client {
             await super.login(token);
             this.utils.log('SUCCESS', 'src/util/client.js', `Logged in as ${this.user.tag}`);
         } catch (e) {
-            this.utils.log('ERROR', 'src/util/client.js', `Error logging in: ${e.message}`);
+            this.utils.log('ERROR', 'src/util/client.js', `Error logging in: ${e}`);
             process.exit(1);
         }
 
@@ -84,7 +84,7 @@ class HandlerClient extends Client {
             await this.loadCommands();
             this.utils.log('SUCCESS', 'src/util/client.js', 'Loaded all commands!');
         } catch (e) {
-            this.utils.log('ERROR', 'src/util/client.js', `Error loading commands: ${e.message}`);
+            this.utils.log('ERROR', 'src/util/client.js', `Error loading commands: ${e}`);
         }
 
         return this.token;
