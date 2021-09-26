@@ -10,9 +10,9 @@
 const { MessageEmbed } = require('discord.js');
 const reactions = ['⏪', '◀️', '⏸️', '▶️', '⏩', '🔢'];
 const consoleColors = {
-     'SUCCESS ':  '\u001b[32m ',
-     'WARNING ':  '\u001b[33m ',
-     'ERROR ':  '\u001b[31m '
+    'SUCCESS': '\u001b[32m',
+    'WARNING': '\u001b[33m',
+    'ERROR': '\u001b[31m'
 };
 
 /**
@@ -229,12 +229,12 @@ class HandlerUtils {
 
     /**
      * Function to shorten down console logs
-     * @param {('SUCCESS'|'WARNING'|'ERROR')} type The type of log (SUCCESS, WARNING, ERROR)
-     * @param {string} path The path where the console log is coming from
-     * @param {string} text The message to be displayed
+     * @param {('SUCCESS'|'WARNING'|'ERROR')} type - The type of log (SUCCESS, WARNING, ERROR)
+     * @param {string} path - The path where the console log is coming from
+     * @param {string} text - The message to be displayed
      */
-    log (type, path, text) {
-        console.log(`\u001b[36;1m<handler>\u001b[0m\u001b[34m [${path}]\u001b[0m ${consoleColors[type]}${text}\u001b[0m`);
+     log (type, path, text) {
+        console.log(`\u001b[36;1m<bot-prefab>\u001b[0m\u001b[34m [${path}]\u001b[0m - ${consoleColors[type]}${text}\u001b[0m`);
     }
 
     /**

@@ -12,9 +12,9 @@ import { Command } from '../src/utils/command';
 
 const reactions = ['⏪', '◀️', '⏸️', '▶️', '⏩', '🔢'];
 const consoleColors = {
-     'SUCCESS ':  '\u001b[32m ',
-     'WARNING ':  '\u001b[33m ',
-     'ERROR ':  '\u001b[31m '
+    'SUCCESS': '\u001b[32m',
+    'WARNING': '\u001b[33m',
+    'ERROR': '\u001b[31m'
 };
 
 async function handleReaction ({ reaction, pageMsg, collector, pageIndex, embeds }: { reaction: MessageReaction, pageMsg: Message; collector: ReactionCollector; pageIndex: number; embeds: MessageEmbed[] }) {
@@ -69,7 +69,7 @@ class HandlerUtils {
      */
     getDefaultChannel (guild: Guild): TextChannel | void {
         let channel: GuildChannel | ThreadChannel | undefined = guild.channels?.cache
-            .filter(c  => !c.isThread() && c.type === 'GUILD_TEXT' && c.permissionsFor(guild.me as GuildMember).has(['SEND_MESSAGES']), true)
+            .filter((c: any) => !c.isThread() && c.type === 'GUILD_TEXT' && c.permissionsFor(guild.me as GuildMember).has(['SEND_MESSAGES']), true)
             .first();
 
         if (!channel && guild.rulesChannel) channel = guild.rulesChannel;
@@ -211,7 +211,7 @@ class HandlerUtils {
      */
     missingPermissions (member: GuildMember, perms: PermissionString[]): string {
         const missingPerms = member.permissions.missing(perms)
-            .map(str=> `\`${str.replace(/_/g, ' ').toLowerCase().replace(/\b(\w)/g, char => char.toUpperCase())}\``);
+            .map(str => `\`${str.replace(/_/g, ' ').toLowerCase().replace(/\b(\w)/g, char => char.toUpperCase())}\``);
     
         return missingPerms.length > 1 ?
             `${missingPerms.slice(0, -1).join( ',  ')} and ${missingPerms.slice(-1)[0]}` :
@@ -224,9 +224,8 @@ class HandlerUtils {
      * @param {string} path The path where the console log is coming from
      * @param {string} text The message to be displayed
      */
-     log (type: 'SUCCESS'|'WARNING'|'ERROR', path: string, text: string) {
-        // @ts-ignore
-        console.log(`\u001b[36;1m<${this.client.user?.username || 'Loading...'}>\u001b[0m\u001b[34m [${path}]\u001b[0m - ${consoleColors[type]}${text}\u001b[0m`);
+    log (type: 'SUCCESS'|'WARNING'|'ERROR', path: string, text: string) {
+        console.log(`\u001b[36;1m<bot-prefab>\u001b[0m\u001b[34m [${path}]\u001b[0m - ${consoleColors[type]}${text}\u001b[0m`);
     }
 
     /**
@@ -260,7 +259,7 @@ class HandlerUtils {
      * @returns {string} Returns a beautified converted string from milliseconds.
      * @example let time = timeToMs(3780000, { format: 'medium', spaces: true, unitRounding: 2, joinstring: ', ' }); -> '1 hr, 3 mins'
      */
-     msToTime (time: number, options: { format?: 'long'|'medium'|'short', spaces?: boolean, unitRounding?: number, joinString?: string } = {}) {
+    msToTime (time: number, options: { format?: 'long'|'medium'|'short', spaces?: boolean, unitRounding?: number, joinString?: string } = {}): string {
         if (
             options.format === undefined ||
             (options.format !== 'short' && options.format !== 'medium' && options.format !== 'long')
